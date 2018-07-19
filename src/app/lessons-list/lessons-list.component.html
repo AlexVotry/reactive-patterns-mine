@@ -1,0 +1,22 @@
+<table class="table lessons-list card card-strong"
+       *ngIf="lessons; else  loadingLessons;">
+    <tbody>
+    <tr *ngFor="let lesson of lessons" (click)="select(lesson)">
+      <td class="viewed">
+        <input [checked]="lesson.completed" type="checkbox" (click)="toggleLessonsViewed(lesson)">
+      </td>
+      <td class="lesson-title"> {{lesson.description}}</td>
+      <td class="duration">
+          <i class="md-icon duration-icon">access_time</i>
+          <span>{{lesson.duration}}</span>
+      </td>
+      <td class="duration">
+        <button type="button" class='button button-highlight' (click)="delete(lesson)">X</button>
+      </td>
+    </tr>
+    </tbody>
+</table>
+
+<ng-template #loadingLessons>
+    <div>Loading ...</div>
+</ng-template>
